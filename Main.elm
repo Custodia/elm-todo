@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Html exposing (Html, div, text, h1, input, button)
 import Html.App
-import Html.Attributes exposing (value, placeholder)
+import Html.Attributes exposing (value, placeholder, style)
 import Html.Events exposing (onInput, onClick)
 import String
 
@@ -36,6 +36,7 @@ init =
 type Msg
   = AddTodo String
   | TextChanged String
+  | RemoveTodo Int
 
 
 -- View
@@ -72,7 +73,11 @@ todoList model =
 todoItem : Todo -> Html Msg
 todoItem todo =
   div []
-    [ text todo.text ]
+    [ text todo.text
+    , button
+        [ onClick (RemoveTodo todo.id)]
+        [ text "Remove" ]
+    ]
 
 
 -- Update
@@ -81,6 +86,15 @@ update msg model =
   case msg of
     TextChanged text ->
       ( { model | textField = text } , Cmd.none)
+
+    RemoveTodo id ->
+      let
+        newModel =
+          { model
+          | todos = List.filter (\m -> m.id /= id) model.todos
+          }
+      in
+        (newModel, Cmd.none)
 
     AddTodo name ->
       let
