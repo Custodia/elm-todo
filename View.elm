@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Html exposing (Html, div, text, h1, input, button)
-import Html.Attributes exposing (value, placeholder, style)
+import Html.Attributes exposing (value, placeholder)
 import Html.Events exposing (onInput, onClick)
 import Model exposing (Model, Todo, initialModel, Msg(..))
 
