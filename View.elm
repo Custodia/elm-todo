@@ -2,7 +2,7 @@ module View exposing (view)
 
 import Html exposing (Html, div, text, h1, input, button)
 import Html.Attributes exposing (value, placeholder)
-import Html.Events exposing (onInput, onClick)
+import Html.Events exposing (onInput, onClick, onSubmit)
 import Model exposing (Model, Todo, initialModel, Msg(..))
 
 
@@ -16,7 +16,8 @@ view model =
         [ input
             [ value model.textField
             , placeholder "Enter new todo name here"
-            , onInput (\s -> TextChanged s) ]
+            , onInput (\s -> TextChanged s)
+            ]
             []
         , button
             [ onClick (AddTodo model.textField) ]
