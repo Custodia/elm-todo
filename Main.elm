@@ -3,8 +3,7 @@ module Main exposing (..)
 import Html.App
 import String
 import View exposing (view)
-import Model exposing (Model, Todo, initialModel)
-import Messages exposing (..)
+import Model exposing (Model, Todo, initialModel, Msg(..))
 
 
 -- Update
